@@ -1,6 +1,3 @@
-from operator import ne
-
-
 class Node:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -63,19 +60,21 @@ class LinkList:
     def print(self):
         printval = self.linkList
         while printval is not None:
-            print(printval.val)
+            print(printval.val, end=" ")
             printval = printval.next
-        print("--------")
+        print()
             
-    
+def tryItOut():
+    egList = LinkList()
+    egList.insertBeginning(23)
+    egList.insertBeginning(67)
+    egList.insertEnd(98)
+    egList.insertBeginning(45)
+    egList.deleteNode(45)
+    egList.insertBeginning(50)
+    egList.print()
+    egList.linkList = egList.reverseList(egList.linkList)
+    egList.print()
+    print("kength:  ",egList.getLength())
 
-egList = LinkList()
-egList.insertBeginning(23)
-egList.insertBeginning(67)
-egList.insertEnd(98)
-egList.insertBeginning(45)
-# egList.deleteNode(45)
-egList.print()
-egList.linkList = egList.reverseList(egList.linkList)
-egList.print()
-print("kength:  ",egList.getLength())
+tryItOut()
