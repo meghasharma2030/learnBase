@@ -35,20 +35,15 @@ class LinkList:
         lastVal.next = Node(val)
 
     def deleteNode(self, dataVal):
+        if(self.linkList == None): return self.linkList
+        while (self.linkList is not None) and (self.linkList.val == dataVal):
+            self.linkList = self.linkList.next
         headVal = self.linkList
-        if(headVal.val == dataVal):
-            self.linkList = headVal.next
-            headVal = None
-            return
         while headVal is not None:
-            if(headVal.val == dataVal): break
-            prev = headVal
-            headVal = headVal.next
-
-        if(headVal == None):
-            return
-        prev.next = headVal.next
-        headVal = None
+            if(headVal.next != None and headVal.next.val == dataVal):
+                headVal.next = headVal.next.next
+            else:
+                headVal= headVal.next
 
     def reverseList(self, headVal):
         if(headVal == None or headVal.next == None): return headVal
@@ -70,11 +65,11 @@ def tryItOut():
     egList.insertBeginning(67)
     egList.insertEnd(98)
     egList.insertBeginning(45)
-    egList.deleteNode(45)
     egList.insertBeginning(50)
     egList.print()
-    egList.linkList = egList.reverseList(egList.linkList)
+    egList.deleteNode(98)
+    # egList.linkList = egList.reverseList(egList.linkList)
     egList.print()
-    print("kength:  ",egList.getLength())
+    # print("kength:  ",egList.getLength())
 
 tryItOut()
